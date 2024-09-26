@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "description": "solucionar listado",
+        "status": "todo",
+        "createdAt": "Thu Sep 26 14:37:28 2024",
+        "updatedAt": "Thu Sep 26 14:37:28 2024"
+    },
+    {
+        "id": 2,
+        "description": "filtrar listado por estado",
+        "status": "todo",
+        "createdAt": "Thu Sep 26 14:37:34 2024",
+        "updatedAt": "Thu Sep 26 14:37:34 2024"
+    },
+    {
+        "id": 3,
+        "description": "commitear en git",
+        "status": "todo",
+        "createdAt": "Thu Sep 26 14:37:50 2024",
+        "updatedAt": "Thu Sep 26 14:37:50 2024"
+    },
+    {
+        "id": 4,
+        "description": "debugear errores y detalles",
+        "status": "todo",
+        "createdAt": "Thu Sep 26 14:37:59 2024",
+        "updatedAt": "Thu Sep 26 14:37:59 2024"
+    }
+]
