@@ -12,7 +12,8 @@ def add_task_to_jsonfile(jsonfile, obj):
         existent_data = json.load(f)
 
     existent_data.append(obj)
-
+    if len(existent_data) != 0:
+        existent_data.sort(key=lambda x: x["id"])
     with open(jsonfile, "w") as f:
         json.dump(existent_data, f, indent=4)
 
@@ -21,10 +22,10 @@ def generate_id(jsonfile):
     with open(jsonfile, "r") as f:
         list = json.load(f)
 
-    if len(list) == 0:
-        id = 1
-    else:
+    if len(list) > 0:
         id = list[-1]["id"] + 1
+    else:
+        id = 1
     return id
 
 
@@ -62,10 +63,11 @@ def del_task(jsonfile, task_id):
 def list_tasks(jsonfile, status):
     with open(jsonfile, "r") as f:
         task_list = json.load(f)
-    if status == None:
-        task_list.sort(key=lambda x: x["id"])
-        for task in task_list:
-            print(task)
+
+    shown_tasks = [x for x in task_list if status in x["status"]]
+    for task in shown_tasks:
+        print(task)
+        print(f"\n")
 
 
 # CMD Functionality
@@ -105,6 +107,7 @@ class TaskTrackerCLI(cmd.Cmd):
             task["description"] = new_task
             task["updatedAt"] = datetime.datetime.now().strftime("%c")
             add_task_to_jsonfile(self.FILE, task)
+            print("Task updated correctly")
 
     def do_del(self, task_id):
         """Delete an existent task with its id"""
